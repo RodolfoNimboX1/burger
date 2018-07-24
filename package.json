@@ -1,0 +1,24 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "is a restaurant app that lets users input the names of burgers they'd like to eat",
+  "main": "index.js",
+  "scripts": {
+    "test": "burger"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RodolfoNimboX1/burger.git"
+  },
+  "author": "Rodolfo Resines",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RodolfoNimboX1/burger/issues"
+  },
+  "homepage": "https://github.com/RodolfoNimboX1/burger#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mysql": "^2.16.0"
+  }
+}
