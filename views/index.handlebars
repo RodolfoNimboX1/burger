@@ -1,0 +1,52 @@
+<div class="container">
+
+<img src="https://images-na.ssl-images-amazon.com/images/I/71JmbDPaXyL.png" alt="burger emoji, what did you expect?" class="img-fluid">
+<h1>Eat-Da-Burgers!</h1>
+
+<form class="create-form">
+  <div class="form-group">
+        
+    <label for="burger">Type your burger, fatty</label>
+    <input name="name" type="text" class="form-control" id="burger_name" placeholder="The Big Burger Combo">
+  </div>
+
+    <button type="submit" class="btn btn-primary">Place Order</button>
+
+</form>
+
+<div class="row">
+<!--Burgers ready to be eaten-->
+<h2>Eat ya Burgha!</h2>
+  <div class="col">
+
+<ul>
+  {{#each burgers}}
+  <li>
+      <p>{{this.id}}. {{this.burger_name}}</p>
+
+      <button data-burgerid="{{this.id}}" data-devoured="true" class="devburger">Devour :B</button>
+  </li>
+  {{/each}}
+</ul>
+
+  </div>
+
+  <!--Burgers eaten-->
+<h2>This your stomach, you fatso</h2>
+  <div class="col">
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured=true}}
+  <li>
+      <p>{{this.id}}. {{this.burger_name}}</p>
+  </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+  </div>
+
+</div> <!--Row ends-->
+
+</div> <!--Container ends-->
