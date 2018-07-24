@@ -6,3 +6,6 @@ VALUES ("The Big  Mac", false);
 
 INSERT INTO burgers (burger_name, devoured) 
 VALUES ("The Big Wendy", false);
+
+INSERT INTO burgers (burger_name, devoured) 
+VALUES ("The Big Dickinson", true);
