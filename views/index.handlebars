@@ -1,48 +1,52 @@
 <div class="container">
 
-<img src="https://images-na.ssl-images-amazon.com/images/I/71JmbDPaXyL.png" alt="burger emoji, what did you expect?" class="img-fluid">
+<img src="https://images-na.ssl-images-amazon.com/images/I/71JmbDPaXyL.png" style="width:20%; height: auto;" ="burger emoji, what did you expect?" class="img-fluid">
 <h1>Eat-Da-Burgers!</h1>
 
-<form class="create-form">
+<form class="newBurger" action="/api/burgers" method="POST">
   <div class="form-group">
         
     <label for="burger">Type your burger, fatty</label>
-    <input name="name" type="text" class="form-control" id="burger_name" placeholder="The Big Burger Combo">
+    <input name="burger-name" type="text" class="form-control" id="burger_name" placeholder="The Big Burger Combo">
   </div>
 
-    <button type="submit" class="btn btn-primary">Place Order</button>
+    <button type="submit" class="btn btn-primary" class="addBurgerButton">Place Order</button>
 
 </form>
 
 <div class="row">
 <!--Burgers ready to be eaten-->
-<h2>Eat ya Burgha!</h2>
   <div class="col">
+  <h2>Eat ya Burgha!</h2>
 
 <ul>
   {{#each burgers}}
-  <li>
-      <p>{{this.id}}. {{this.burger_name}}</p>
-
-      <button data-burgerid="{{this.id}}" data-devoured="true" class="devburger">Devour :B</button>
-  </li>
+  {{#unless this.devoured}}
+            <div>
+              <form action="/api/burgers/{{this.id}}?_method=PUT" method="POST">
+                <button type="submit" class='burgerAvailable'data-id="{{id}}"> {{this.burger_name}}</button>
+              </form>
+            </div>
+  {{/unless}}
   {{/each}}
 </ul>
 
   </div>
 
   <!--Burgers eaten-->
-<h2>This your stomach, you fatso</h2>
   <div class="col">
+  <h2>This your stomach, you fatso</h2>
 
 <ul>
-  {{#each burgers}}
-    {{#if devoured=true}}
-  <li>
-      <p>{{this.id}}. {{this.burger_name}}</p>
-  </li>
-    {{/if}}
-  {{/each}}
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div class='burgerEaten'>
+              <div>
+                {{this.burger_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
 </ul>
 
   </div>

@@ -1,16 +1,14 @@
-$(function() {
-
     // submit burger POST
-    $(".create-form").on("submit", function(event) {
+    $(".newBurger").on("submit", function(event) {
         event.preventDefault();
-    
+
+        var input = $("[name=burger-name]").val().trim();
         var newBurger = {
-            burger_name: $("#burger_name").val().trim(),
-            devoured: false
+            burger_name: input,
         };
     
         //send POST request
-        $.ajax("api/burgers", {
+        $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
         }).then(function() {
@@ -20,22 +18,18 @@ $(function() {
     }); //submit burger ends
 
     // devour burger PUT
-    $(".devburger").on("click", function(event) {
-        var id = $(this).data("burgerid");
-        var devoured = $(this).data("devoured");
-
-        var eaten = {
-            devoured: devoured
+    $(".burgerAvailable").on("click", function(event) {
+        var id = $(this).data("id");
+        var newState = {
+            devoured: true
         };
 
         //send PUT request
-        $.ajax("api/burgers/" + id, {
+        $.ajax("/api/burgers/" + id, {
             type: "PUT",
-            data: eaten
+            data: newState
         }).then(function() {
-            console.log("burger has ben eaten: " + eaten);
+            console.log("burger has ben eaten: " + newState);
             location.reload();
         }); // ajax ends
     }); // devour burger ends
-    
-    });// function ends
