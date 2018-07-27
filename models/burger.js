@@ -8,12 +8,14 @@ var burger = {
     },
     insertOne: function(cols, vals, cb) {
         console.log(cols, "---------------")
-        console.log(vals, "---------------")
+        console.log(vals, "---------------",  typeof(vals))
         orm.insertOne("burgers", cols, vals, function(result) {
             cb(result);
         });
     },
     updateOne: function(object, where, cb) {
+        console.log(object);
+        console.log(where);
         orm.updateOne("burgers", object, where, function(result) {
             cb(result);
         });

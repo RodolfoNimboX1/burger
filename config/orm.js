@@ -45,14 +45,18 @@ var orm = {
 	// Function that insert a single table entry
 	insertOne: function(table, cols, vals, cb) {
 		// Construct the query string that inserts a single row into the target table
+		console.log(cols);
+		console.log(cols.length);
+		console.log(vals);
+		console.log(vals.length);
 		var queryString = "INSERT INTO " + table;
 
 		queryString += " (";
 		queryString += cols.toString();
 		queryString += ") ";
-		queryString += "VALUES (";
-		queryString += printQuestionMarks(vals.length);
-		queryString += ") ";
+		queryString += "VALUES ('";
+		queryString += vals.toString();//printQuestionMarks(vals.length);
+		queryString += "') ";
 
 		console.log(queryString);
 
@@ -69,6 +73,9 @@ var orm = {
 
 	// Function that updates a single table entry
 	updateOne: function(table, object, where, cb) {
+		console.log(table, "---------------");
+		console.log(object, "---------------");
+		console.log(where, "---------------");
 		// Construct the query string that updates a single entry in the target table
 		var queryString = "UPDATE " + table;
 

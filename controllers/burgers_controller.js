@@ -19,7 +19,7 @@ router.post("/api/burgers", function(req, res) {
     burgers.insertOne('burger_name', req.body.burger_name, function(result) {
         console.log(result);
         res.json({ id: result.insertId });
-        res.redirect("/");
+        //res.redirect("/");
     });
 });
 

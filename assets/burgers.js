@@ -4,8 +4,7 @@
 
         var input = $("[name=burger_name]").val().trim();
         var newBurger = {
-            burger_name: input,
-            devoured: false
+            burger_name: input
         };
     
         //send POST request

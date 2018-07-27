@@ -24,7 +24,7 @@
   {{#unless this.devoured}}
             <div>
               <form action="/api/burgers/{{this.id}}?_method=PUT" method="POST">
-                <button type="submit" class='burgerAvailable'data-id="{{id}}"> {{this.burger_name}}</button>
+                <button type="submit" class='burgerAvailable'data-id="{{id}}" data-type="true"> {{this.burger_name}}</button>
               </form>
             </div>
   {{/unless}}
