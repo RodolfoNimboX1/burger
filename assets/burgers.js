@@ -2,17 +2,18 @@
     $(".newBurger").on("submit", function(event) {
         event.preventDefault();
 
-        var input = $("[name=burger-name]").val().trim();
+        var input = $("[name=burger_name]").val().trim();
         var newBurger = {
             burger_name: input,
+            devoured: false
         };
     
         //send POST request
         $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
-        }).then(function() {
-            console.log("created new burger");
+        }).then(function(result) {
+            console.log("created new burger " + result);
             location.reload();
         });// ajax ends
     }); //submit burger ends

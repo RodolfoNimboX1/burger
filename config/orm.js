@@ -3,6 +3,7 @@ var connection = require("../config/connection.js");
 
 // Helper function for generating MySQL syntax
 function printQuestionMarks(num) {
+	
 	var arr = [];
 
 	for (var i = 0; i < num; i++) {
@@ -53,7 +54,7 @@ var orm = {
 		queryString += printQuestionMarks(vals.length);
 		queryString += ") ";
 
-		// console.log(queryString);
+		console.log(queryString);
 
 		// Perform the database query
 		connection.query(queryString, vals, function(err, result) {
@@ -76,7 +77,7 @@ var orm = {
 		queryString += " WHERE ";
 		queryString += where;
 
-		// console.log(queryString);
+		console.log(queryString);
 
 		// Perform the database query
 		connection.query(queryString, function(err, result) {
