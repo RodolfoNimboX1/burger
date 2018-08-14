@@ -1,26 +1,25 @@
 // Import MySQL connection.
 var connection = require("../config/connection.js");
 
-// Helper function for generating MySQL syntax
-function printQuestionMarks(num) {
-	
-	var arr = [];
-
-	for (var i = 0; i < num; i++) {
-		arr.push("?");
-	}
-
-	return arr.toString();
-}
-
-// Helper function for generating My SQL syntax
+// Helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
-	var arr = [];
+    var arr = [];
 
-	for (var key in ob) {
-		arr.push(key + "=" + ob[key]);
-	}
-
+    // loop through the keys and push the key/value as a string int arr
+    for (var key in ob) {
+        var value = ob[key];
+        // check to skip hidden properties
+        if (Object.hasOwnProperty.call(ob, key)) {
+            // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
+            if (typeof value === "string" && value.indexOf(" ") >= 0) {
+                value = "'" + value + "'";
+            }
+            // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
+            // e.g. {sleepy: true} => ["sleepy=true"]
+            arr.push(key + "=" + value);
+        }
+    }
+    // translate array of strings to a single comma-separated string
 	return arr.toString();
 }
 
@@ -45,20 +44,20 @@ var orm = {
 	// Function that insert a single table entry
 	insertOne: function(table, cols, vals, cb) {
 		// Construct the query string that inserts a single row into the target table
-		console.log(cols);
-		console.log(cols.length);
-		console.log(vals);
-		console.log(vals.length);
+		//console.log(cols);
+		//console.log(cols.length);
+		//console.log(vals);
+		//console.log(vals.length);
 		var queryString = "INSERT INTO " + table;
 
 		queryString += " (";
 		queryString += cols.toString();
 		queryString += ") ";
 		queryString += "VALUES ('";
-		queryString += vals.toString();//printQuestionMarks(vals.length);
+		queryString += vals.toString();
 		queryString += "') ";
 
-		console.log(queryString);
+		//console.log(queryString);
 
 		// Perform the database query
 		connection.query(queryString, vals, function(err, result) {
@@ -91,7 +90,6 @@ var orm = {
 			if (err) {
 				throw err;
 			}
-
 			// Return results in callback
 			cb(result);
 		});

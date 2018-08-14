@@ -13,9 +13,7 @@ var burger = {
             cb(result);
         });
     },
-    updateOne: function(object, where, cb) {
-        console.log(object);
-        console.log(where);
+    updateOne: function(object, where, cb){
         orm.updateOne("burgers", object, where, function(result) {
             cb(result);
         });
