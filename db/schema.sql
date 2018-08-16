@@ -1,9 +1,9 @@
 -- Drops the blogger if it exists currently --
-DROP DATABASE IF EXISTS burgers_db;
+DROP DATABASE IF EXISTS jzhb3j0xmls4q7gj;
 
-CREATE DATABASE burgers_db;
+CREATE DATABASE jzhb3j0xmls4q7gj;
 
-USE burgers_db;
+USE jzhb3j0xmls4q7gj;
 
 CREATE TABLE burgers (
 id int NOT NULL AUTO_INCREMENT,
