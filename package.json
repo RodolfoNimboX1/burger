@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/RodolfoNimboX1/burger/issues"
   },
-  "homepage": "https://github.com/RodolfoNimboX1/burger#readme",
+  "homepage": "https://github.com/RodolfoNimboX1/burger",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
